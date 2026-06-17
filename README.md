@@ -1,1 +1,2 @@
 # New-1
+This project directly addresses three limitations identified in the closest related work — cloud cover handling through tiered fallback to thermal anomaly data and future SAR integration, dataset limitations through combining NASA FIRMS historical records with Forest Survey of India ground truth data, and geographic generalisation by specifically targeting Indian forest conditions with India-calibrated preprocessing and vegetation indices.
