@@ -1,1 +1,21 @@
+#Initial reading the .jp2 images 
+import rasterio as rs
+import numpy as np
 
+''' Accessimng B08 amd calculating NDVI'''
+with rs.open("T44RLT_20230225T051801_B04_10m.jp2") as f1,rs.open("T44RLT_20230225T051801_B08_10m.jp2") as f2:
+    B04=f1.read(1)
+    print(f"Width : {f1.width}")
+    print(f"height : {f1.height}")
+    print(f"CRS : {f1.crs}")
+    print(f"Transform : {f1.transform}")
+    print(f"COunt : {f1.count}")
+    print(f"Array : {B04}")
+    print(f"Max : {B04.max()}")
+    print(f"Min : {B04.min()}")
+    B08=f2.read(1)
+    B08=B08.astype(np.float32)
+    B04=B04.astype(np.float32)
+    with np.errstate(divide='ignore', invalid='ignore'):
+        NDVI = (B08 - B04) / (B08 + B04)
+        NDVI = np.where(np.isfinite(NDVI), NDVI, 0)
