@@ -2,7 +2,7 @@
 import rasterio as rs
 import numpy as np
 
-''' Accessimng B08 amd calculating NDVI'''
+''' Accessing B08 amd calculating NDVI'''
 with rs.open("T44RLT_20230225T051801_B04_10m.jp2") as f1,rs.open("T44RLT_20230225T051801_B08_10m.jp2") as f2:
     B04=f1.read(1)
     print(f"Width : {f1.width}")
